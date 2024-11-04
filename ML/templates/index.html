@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle por Movimentos Faciais</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img id="video-stream" src="{{ url_for('video_feed_route') }}" alt="Video Stream" />
+
+        <div class="controls">
+            <div id="arrow-up" class="arrow">↑</div>
+            <div id="arrow-down" class="arrow">↓</div>
+            <div id="arrow-left" class="arrow">←</div>
+            <div id="arrow-right" class="arrow">→</div>
+        </div>
+
+        <!-- Nova seção de coleta de dados -->
+        <div class="data-collection">
+            <h3>Coleta de Dados</h3>
+            <button class="collect-btn" data-label="up">Coletar Cima</button>
+            <button class="collect-btn" data-label="down">Coletar Baixo</button>
+            <button class="collect-btn" data-label="left">Coletar Esquerda</button>
+            <button class="collect-btn" data-label="right">Coletar Direita</button>
+            <button id="train-model">Treinar Modelo</button>
+        </div>
+
+        <div class="panel">
+            <button id="toggle-camera">Ativar/Desativar Câmera</button>
+            <label for="sensitivity">Sensibilidade</label>
+            <input type="range" id="sensitivity" min="1" max="10" value="5">
+            <div id="status">Status: <span id="system-status">Ativado</span></div>
+        </div>
+    </div>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
